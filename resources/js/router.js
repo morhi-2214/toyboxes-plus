@@ -5,7 +5,7 @@ import ContactsCreate from "../views/ContactsCreate";
 Vue.use(VueRouter);
 
 export default new VueRouter({
-    mode: history,
+    mode: "history",
     routes: [
         {
             path: "/contacts/create",
