@@ -30,10 +30,15 @@
                 <button>新規登録</button>
             </div>
         </form>
-        <p>{{ form.name }}</p>
+        <!-- <p>{{ form.name }}</p>
         <p>{{ form.email }}</p>
         <p>{{ form.company }}</p>
-        <p>{{ form.birthday }}</p>
+        <p>{{ form.birthday }}</p> -->
+
+        <!-- axiosでDBからとってきたデータを表示 -->
+        <div v-for="user in users" :key="user.id">
+            <p>{{ user.name }}</p>
+        </div>
     </div>
 </template>
 
@@ -48,11 +53,16 @@ export default {
                 email: "",
                 company: "",
                 birthday: ""
-            }
+            },
+            users: ""
         };
     },
     components: {
         InputField
+    },
+    mounted() {
+        // axiosでDBからデータをとってきた
+        axios.get("/customers").then(response => (this.users = response.data));
     }
 };
 </script>
